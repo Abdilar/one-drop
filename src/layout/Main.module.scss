@@ -1,0 +1,27 @@
+@import "../asset/styles/mixins/index";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+  margin: 0;
+  height: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+    @include just-tablet-laptop {
+      border-right: 4px solid #eaeaea;
+      border-left: 4px solid #eaeaea;
+    }
+    width: 100%;
+    overflow: hidden;
+  }
+
+    &__wrapper {
+      max-width: 55rem;
+    }
+}

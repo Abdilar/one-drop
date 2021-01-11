@@ -1,0 +1,194 @@
+@import "colors";
+@import "uikit";
+@import "sakit/style";
+@import "mixins/index";
+@import "components/index";
+
+$announcement-icon-color: $danger-color;
+$checkbox-color: $primary-color;
+$form-color-muted: #fbfbfb;
+$form-color-border-muted: #f0f0f0;
+$starred-color: lighten(adjust-hue($secondary-color, 8), 1.76);
+$intro-text-color: #999;
+
+* {
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html, body, main {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  @include font-family();
+  font-size: 1.6rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include font-family(bold);
+}
+
+p, span, a, legend, textarea, li {
+  @include font-family('light');
+  font-size: 1.2rem;
+}
+
+label {
+  @include font-family('light');
+  font-size: 1.4rem;
+}
+
+em {
+  color: inherit !important;
+}
+
+a, legend, textarea, li {
+  //@include font-family('light');
+  color: $text-color;
+  font-size: 1.4rem;
+}
+
+b {
+  color: $title-color;
+  @include font-family();
+}
+
+label, button {
+  @include font-family();
+  font-size: 1.2rem;
+}
+
+figure {
+  margin: 0;
+}
+
+body > main {
+  display: flex;
+  overflow: hidden;
+}
+
+.form-muted {
+  input, textarea {
+    background: $form-color-muted;
+    border: 1px solid $form-color-border-muted;
+  }
+}
+
+.checkbox:checked {
+  background-color: $checkbox-color !important;
+}
+
+.hover-muted {
+  cursor: pointer;
+  min-height: 2.4rem;
+  padding: 0 .5rem;
+  border-radius: .4rem;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color .2s ease-in-out;
+  &:hover {
+    background-color: #e8ecee;
+  }
+}
+
+.filter--selected {
+  background-color: #e8ecee;
+}
+
+.\!font-regular {
+  @include font-family();
+}
+
+.\!font-bold {
+  @include font-family('bold');
+}
+
+.\!font-light {
+  @include font-family('light');
+}
+
+.\!font-medium {
+  @include font-family('medium');
+}
+
+.\!font-black {
+  @include font-family('black');
+}
+
+input:focus {
+  border-color: $primary-color;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.starred {
+  color: $starred-color;
+}
+
+.text-xmedium {
+  font-size: 1.3rem;
+}
+
+.announcement-icon {
+  background-color: $announcement-icon-color;
+  color: $white-color;
+  line-height: 1px;
+  padding: 3px;
+  border-radius: 20px;
+  & > i {
+    font-size: 1.4rem;
+  }
+}
+
+.CalendarDay__today {
+  position: relative;
+  z-index: 0;
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    z-index: -1;
+    border: 1px solid $primary-color;
+  }
+}
+
+.introjs-showElement {
+  color: $intro-text-color !important;
+}
+
+.infinite-scroll-component__outerdiv {
+  height: 100%;
+}
+
+.filter-bar {
+  .DateRangePicker_1 {
+    & > div {
+      display: flex;
+      .DateRangePickerInput {
+        border: none;
+        background: transparent;
+        .DateInput, .DateRangePickerInput_arrow, .DateRangePickerInput_clearDates{
+          display: none;
+        }
+        .DateRangePickerInput_calendarIcon{
+          margin: 0;
+        }
+        .DateRangePicker_picker{
+          z-index: 2;
+          top: 30px !important;
+        }
+      }
+    }
+  }
+}

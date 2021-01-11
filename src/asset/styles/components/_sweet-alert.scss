@@ -1,0 +1,92 @@
+$sweet-alert-color-white: #fff;
+
+.sweet-alert {
+  &__container {
+    overflow-y: hidden !important;
+    align-items: flex-end !important;
+  }
+
+  &__title {
+    font-size: 2rem !important;
+  }
+
+  &__content {
+    font-size: 1.4rem !important;
+    margin-bottom: 20px;
+    flex: 1;
+    margin-top: 10px;
+  }
+
+  &__popup {
+    font-size: 1.6rem !important;
+    display: flex !important;
+    height: 250px !important;
+    width: 400px !important;
+    //margin: 0 auto !important;
+    flex-direction: column !important;
+  }
+
+  &__error__popup {
+    font-size: 1.6rem !important;
+    display: flex !important;
+    height: unset !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    flex-direction: column !important;
+  }
+
+  &__error__report__popup {
+    font-size: 1.6rem !important;
+    display: flex !important;
+    height: unset !important;
+    width: 100% !important;
+    flex-direction: column !important;
+  }
+
+  &__icon, &__icon span {
+    font-size: 1.6rem !important;
+  }
+}
+
+.animate__animated {
+  -webkit-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.animate__fadeOutDown {
+  -webkit-animation-name: fadeOutDown;
+  animation-name: fadeOutDown;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(500px);
+    transform: translateY(500px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+  }
+}
+
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(500px);
+    transform: translateY(500px);
+  }
+}

@@ -1,0 +1,202 @@
+$background-active: $primary-color;
+$background: lighten(saturate($primary-color, 11.70), 27.06);
+$background-hover: darken($background, 4%);
+$color: $white-color;
+$color-active: lighten(saturate(adjust-hue($title-color, 214), 24.27), 0.20);
+$border-radius: 50px;
+$input-border-radius: 4px;
+$input-border-color: lighten(saturate(adjust-hue($muted-color, 203), 19.05), 31.76);
+$cell-width: 29px;
+$text-size: 12px;
+$date-picker-width: 234px;
+$date-picker-height: 255px;
+$date-picker-input-size: 90px;
+$week-header-background: darken(saturate(adjust-hue($white-color, 200), 20.00), 2.94);
+$week-header-border-color: lighten(saturate(adjust-hue($muted-color, 200), 15.00), 32.16);
+
+
+.CalendarDay {
+  border: none !important;
+  &__selected {
+    position: relative;
+    background: $background !important;
+    color: $color !important;
+    z-index: 0;
+
+    &:active, &:hover {
+      @extend .CalendarDay__selected;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $background-active;
+      border-radius: $border-radius;
+      z-index: -1;
+    }
+
+    &_span {
+      background: $background !important;
+      color: $color-active !important;
+      transition: background-color .2s ease-in-out;
+
+      &:hover {
+        background: $background-hover !important;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__hovered_span  {
+    @extend .CalendarDay__selected_span;
+  }
+}
+
+.CalendarMonth {
+  padding: 0 !important;
+  &_caption {
+    font-size: $text-size;
+    padding-top: 10px;
+    padding-bottom: 40px;
+  }
+
+  &_table {
+    & > tbody > tr > td {
+      width: $cell-width !important;
+      height: $cell-width - 1 !important;
+      font-size: $text-size;
+      &:last-of-type {
+        &.CalendarDay__selected_start {
+          border-radius: $border-radius $border-radius 0 0;
+        }
+      }
+      &:not(last-of-type) {
+        &.CalendarDay__selected_start {
+          border-radius: $border-radius 0 0 $border-radius;
+        }
+      }
+
+      &:first-of-type {
+        &.CalendarDay__selected_end {
+          border-radius: 0 0 $border-radius $border-radius;
+        }
+      }
+
+      &:not(first-of-type) {
+        &.CalendarDay__selected_end {
+          border-radius: 0 $border-radius $border-radius 0;
+        }
+      }
+    }
+  }
+}
+
+.DayPicker_weekHeader {
+  top: 35px !important;
+  left: 0 !important;
+  padding: 2px 12px !important;
+  background-color: $week-header-background;
+  border-top: 1px solid $week-header-border-color;
+
+  &s__horizontal {
+    margin-left: 0;
+  }
+
+  &_li {
+    width: $cell-width + 1 !important;
+  }
+}
+
+.DayPickerNavigation {
+  &_button {
+    position: absolute;
+    width: 24px;
+    height: 23px;
+    top: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: background-color .2s ease-in-out;
+
+    &:hover {
+      background: $background;
+      color: $color-active;
+    }
+  }
+
+  & > div:first-child {
+    left: 15px;
+  }
+  & > div:last-child {
+    right: 15px;
+  }
+}
+
+.DayPicker, .DayPicker_transitionContainer, .DayPicker > div > div {
+  width: $date-picker-width !important;
+}
+
+.DayPicker_transitionContainer {
+  height: $date-picker-height !important;
+}
+
+.DateInput {
+  width: $date-picker-input-size;
+
+  &_input {
+    font-size: $text-size + 2;
+    box-sizing: border-box;
+    padding: 4px 5px 4px 11px;
+    &[name="endDate"] {
+      padding-left: 5px !important;
+    }
+    &__focused {
+      border-color: $background-active;
+    }
+  }
+
+  &_fang {
+    display: none;
+  }
+}
+
+.DateRangePickerInput{
+  &:focus-within {
+    //border-color: $background-active !important;
+    & .DateRangePickerInput_calendarIcon {
+      color: $background-active !important;
+    }
+  }
+  &__withBorder {
+    border-radius: $input-border-radius;
+    border-color: $input-border-color;
+    overflow: hidden;
+  }
+
+  &_calendarIcon {
+    padding: 4px;
+    margin: 0 5px 0 0;
+  }
+
+  &_arrow {
+    font-size: $text-size;
+  }
+
+  &_clearDates {
+    margin: 0;
+    padding: 7px;
+    transform: initial;
+    top: initial;
+  }
+}
+
+.CalendarMonthGrid{
+  &__horizontal {
+    width: $date-picker-width * 3 !important;
+  }
+}

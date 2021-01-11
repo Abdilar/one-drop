@@ -1,0 +1,162 @@
+$quill-border-color: lighten(saturate(adjust-hue($muted-color, 203), 19.05), 31.76);
+$placeholder-color: lighten(saturate(adjust-hue($muted-color, 208), 10.61), 4.90);
+$quill-back-color: #fff;
+$quill-link-border-color: #ccc;
+$comment-color: #14aaf5;
+$comment-text-color: #fff;
+
+$toolbar-transition: all 500ms;
+
+.clean-toolbar {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  border: none !important;
+  visibility: hidden;
+  transition: $toolbar-transition;
+  opacity: 0;
+  top: -40px;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    & ~ div .quill {
+      .ql-editor {
+        min-height: 70px;
+        padding-bottom: 0;
+      }
+      &.has-attachment {
+        .ql-editor {
+          min-height: 120px;
+          padding-bottom: 68px;
+        }
+        & ~ .quill-attachment {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+.dirty-toolbar {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  border: none !important;
+  padding: 4px !important;
+  transition: $toolbar-transition;
+  top: -30px;
+  visibility: hidden;
+  opacity: 0;
+  &.active {
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    & ~ div .quill {
+      .ql-editor {
+        min-height: 20px;
+        padding-top: 5px;
+        padding-bottom: 7px;
+      }
+      &.has-attachment {
+        .ql-editor {
+          min-height: 70px;
+          padding-bottom: 80px;
+        }
+        & ~ .quill-attachment {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.focus-toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility:hidden;
+  bottom: -50px;
+  z-index: 1;
+  border: none !important;
+  transition: $toolbar-transition;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 0;
+    & ~ .quill {
+      .ql-editor {
+        min-height: 120px;
+        padding-bottom: 35px;
+      }
+      &.has-attachment {
+        .ql-editor {
+          min-height: 170px;
+          padding-bottom: 123px;
+        }
+        & ~ .quill-attachment {
+          bottom: 40px;
+        }
+      }
+    }
+  }
+  .comment {
+    padding: 5px 8px !important;
+    width: initial !important;
+    float: none !important;
+    line-height: initial !important;
+    height: initial !important;
+
+    &--edit {
+      min-width: 60px;
+    }
+
+    &--create {
+      min-width: 77px;
+    }
+  }
+}
+
+.quill-attachment {
+  left: 10px;
+  bottom: 0;
+  z-index: 1;
+  transition: all 500ms;
+}
+
+.attachment-button {
+  border: none !important;
+}
+
+.ql-tooltip {
+  left: 0 !important;
+}
+
+.ql-link {
+  border-right: 1px solid $quill-link-border-color !important;
+  box-sizing: border-box;
+}
+.quill {
+  .ql {
+    &-container {
+      background-color: $quill-back-color;
+      border-radius: 4px;
+      border-color: $quill-border-color !important;
+    }
+
+    &-editor {
+      transition: $toolbar-transition;
+      & p {
+        overflow-wrap: anywhere;
+        @include font-family();
+      }
+
+      &.ql-blank::before {
+        color: $placeholder-color !important;
+        font-style: normal !important;
+        @include font-family('light');
+      }
+    }
+  }
+
+}
