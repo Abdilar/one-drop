@@ -2,6 +2,10 @@ import React from 'react';
 import moment from 'moment';
 
 import "./Home.style.scss";
+import blood from '../../asset/images/blood.svg';
+import running from '../../asset/images/running.svg';
+import food from '../../asset/images/food.svg';
+import medicin from '../../asset/images/medicin.svg';
 
 class Home extends React.Component {
   state = {
@@ -62,10 +66,12 @@ class Home extends React.Component {
       <section className="flex__column height__expand">
         <div className="padding__horizontal__20 uk-child-width-1-4 uk-grid-small padding__vertical__10 width__expand box__border" uk-grid="true">
           <div className="">
-            <div className="flex__center__horizontal margin__bottom__5">
-              <i className="!text__xlarge icon-trash" />
+            <div className="flex__center__horizontal margin__bottom__10">
+              <span>
+                <img className="icon" src={food} alt="food"/>
+              </span>
             </div>
-            <div className="flex__center__horizontal">
+            <div className="flex__center__horizontal margin__bottom__5">
               <span className="margin__left__5 !font-bold">0</span>
               <span>کربوهیدرات</span>
             </div>
@@ -75,10 +81,12 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="">
-             <div className="flex__center__horizontal margin__bottom__5">
-              <i className="!text__xlarge icon-trash" />
+             <div className="flex__center__horizontal margin__bottom__10">
+              <span>
+                <img className="icon" src={running} alt="activity"/>
+              </span>
             </div>
-            <div className="flex__center__horizontal">
+            <div className="flex__center__horizontal margin__bottom__5">
               <span className="margin__left__5 !font-bold">0</span>
               <span>قدم</span>
             </div>
@@ -88,10 +96,12 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="">
-             <div className="flex__center__horizontal margin__bottom__5">
-              <i className="!text__xlarge icon-trash" />
+             <div className="flex__center__horizontal margin__bottom__10">
+              <span>
+                <img className="icon" src={medicin} alt="drug"/>
+              </span>
             </div>
-            <div className="flex__center__horizontal">
+            <div className="flex__center__horizontal margin__bottom__5">
               <span className="!font-bold">0</span>
             </div>
             <div className="flex__center__horizontal">
@@ -99,10 +109,12 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="">
-            <div className="flex__center__horizontal margin__bottom__5">
-              <i className="!text__xlarge icon-trash" />
+            <div className="flex__center__horizontal margin__bottom__10">
+              <span>
+                <img className="icon" src={blood} alt="blood"/>
+              </span>
             </div>
-            <div className="flex__center__horizontal">
+            <div className="flex__center__horizontal margin__bottom__5">
               <span className="!font-bold">130</span>
             </div>
             <div className="flex__center__horizontal">
