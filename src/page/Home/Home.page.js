@@ -133,7 +133,7 @@ class Home extends React.Component {
             <ul className="padding__remove__horizontal padding__bottom__30">
               {
                 this.state.reports.map((report, index) => (
-                  <li key={`report-${index}`} className="uk-list padding__top__10 padding__bottom__5 flex__center__vertical">
+                  <li key={`report-${index}`} className="report__item uk-list padding__top__10 padding__bottom__5 flex__center__vertical">
                     <div className="flex__center__horizontal width-40 margin__left__15 padding__top__5">
                       <span className={`circle-${report.color} circle-${report.size} display__inline-block`} />
                     </div>

@@ -40,3 +40,9 @@
 .icon {
   width: 25px;
 }
+
+.report__item {
+  & > div::before {
+    content: initial;
+  }
+}
