@@ -6,6 +6,11 @@ import blood from '../../asset/images/blood.svg';
 import running from '../../asset/images/running.svg';
 import food from '../../asset/images/food.svg';
 import medicin from '../../asset/images/medicin.svg';
+import menu from '../../asset/images/menu.svg';
+import scale from '../../asset/images/scale.svg';
+import menuBlood from '../../asset/images/menu-blood.svg';
+import menuRunning from '../../asset/images/menu-running.svg';
+import stethoscope from '../../asset/images/stethoscope.svg';
 
 class Home extends React.Component {
   state = {
@@ -57,14 +62,38 @@ class Home extends React.Component {
         description: "mg/dL",
         color: "cyan",
         size: "medium"
+      }
+    ],
+    menus: [
+      {
+        name: 'وزن',
+        icon: scale,
+        color: 'blue'
       },
+      {
+        name: 'فشار خون',
+        icon: stethoscope,
+        color: 'green'
+      },
+      {
+        name: 'فعالیت',
+        icon: menuRunning,
+        color: 'orange'
+      },
+      {
+        name: 'گلوکز',
+        icon: menuBlood,
+        color: 'red'
+      }
     ]
   };
 
   render() {
     return (
       <section className="flex__column height__expand">
-        <div className="padding__horizontal__20 uk-child-width-1-4 uk-grid-small padding__vertical__10 width__expand box__border" uk-grid="true">
+        <div
+          className="border__bottom padding__horizontal__20 uk-child-width-1-4 uk-grid-small padding__vertical__10 width__expand box__border"
+          uk-grid="true">
           <div className="">
             <div className="flex__center__horizontal margin__bottom__10">
               <span>
@@ -81,7 +110,7 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="">
-             <div className="flex__center__horizontal margin__bottom__10">
+            <div className="flex__center__horizontal margin__bottom__10">
               <span>
                 <img className="icon" src={running} alt="activity"/>
               </span>
@@ -96,7 +125,7 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="">
-             <div className="flex__center__horizontal margin__bottom__10">
+            <div className="flex__center__horizontal margin__bottom__10">
               <span>
                 <img className="icon" src={medicin} alt="drug"/>
               </span>
@@ -123,7 +152,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="overflow-y-auto overflow-x-hidden">
-          <div className="background__muted padding__horizontal__20 padding__vertical__15 border__bottom border__top">
+          <div className="background__muted padding__horizontal__20 padding__vertical__15 border__bottom">
             <p className="text__medium !secondary-font-medium">1 برنامه دارویی</p>
           </div>
           <div className="background__muted padding__horizontal__20 padding__vertical__15 border__bottom">
@@ -133,9 +162,10 @@ class Home extends React.Component {
             <ul className="padding__remove__horizontal padding__bottom__30">
               {
                 this.state.reports.map((report, index) => (
-                  <li key={`report-${index}`} className="report__item uk-list padding__top__10 padding__bottom__5 flex__center__vertical">
+                  <li key={`report-${index}`}
+                      className="report__item uk-list padding__top__10 padding__bottom__5 flex__center__vertical">
                     <div className="flex__center__horizontal width-40 margin__left__15 padding__top__5">
-                      <span className={`circle-${report.color} circle-${report.size} display__inline-block`} />
+                      <span className={`circle-${report.color} circle-${report.size} display__inline-block`}/>
                     </div>
                     <div className="flex-1">
                       <div className="flex__space-between flex__center__vertical">
@@ -150,8 +180,34 @@ class Home extends React.Component {
             </ul>
           </div>
         </div>
+        <div className="padding__horizontal__20 padding__vertical__10 border__top">
+          <span uk-toggle="target: #menu-bar">
+            <img className="icon" src={menu} alt="menu"/>
+          </span>
+          <div id="menu-bar" className="uk-modal-full" uk-modal="true">
+            <div className="uk-modal-dialog height__expand flex__end padding__bottom__80">
+              <button className="uk-modal-close-full uk-close-large icon-close" type="button" uk-close="true"/>
+              <div>
+                <ul className="uk-list padding__remove__horizontal">
+                  {
+                    this.state.menus.map((menu, index) => (
+                      <li key={`menu-${index}`} className={`padding__horizontal__10 ${!!index ? '!margin__top__15' : ''}`}>
+                        <span className={`icon-menu icon-menu-${menu.color} uk-display-inline-block`}>
+                          <img src={menu.icon} alt=""/>
+                        </span>
+                        <span className="!secondary-font-medium padding__right__15 text__medium text__bolder">{menu.name}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </section>
-    )
+    );
   }
 }
 
