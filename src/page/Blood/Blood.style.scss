@@ -52,7 +52,7 @@ $green-color: #8BC34A;
   }
 }
 
-.my-icon-close {
+.icon-close {
   bottom: 0;
   top: initial !important;
   &::before {
@@ -85,28 +85,4 @@ $green-color: #8BC34A;
   }
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1010;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 15px 15px;
-  background: rgba(0,0,0,.6);
-  opacity: 0;
-  transition: opacity .15s linear;
-}
 
-.active-modal {
-  opacity: 1 !important;
-  display: block !important;
-
-}
-
-.active-modal-dialog {
-  opacity: 1 !important;
-}

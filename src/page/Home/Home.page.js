@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import {Link} from "react-router-dom";
+import {PAGE} from "../../config/variables";
 
 import "./Home.style.scss";
 import blood from '../../asset/images/blood.svg';
@@ -14,6 +16,8 @@ import stethoscope from '../../asset/images/stethoscope.svg';
 
 class Home extends React.Component {
   state = {
+    activeModal: false,
+    activeModalDialog: false,
     reports: [
       {
         value: "130/90",
@@ -68,24 +72,40 @@ class Home extends React.Component {
       {
         name: 'وزن',
         icon: scale,
-        color: 'blue'
+        color: 'blue',
+        href: PAGE.WEIGHT.VALUE
       },
       {
         name: 'فشار خون',
         icon: stethoscope,
-        color: 'green'
+        color: 'green',
+        href: PAGE.BLOOD.VALUE
       },
       {
         name: 'فعالیت',
         icon: menuRunning,
-        color: 'orange'
+        color: 'orange',
+        href: PAGE.ACTIVITY.VALUE
       },
       {
         name: 'گلوکز',
         icon: menuBlood,
-        color: 'red'
+        color: 'red',
+        href: PAGE.GLUCOSE.VALUE
       }
     ]
+  };
+
+  toggleMenu = (toOpen) => {
+    if (toOpen) {
+      this.setState({activeModal: true}, () => {
+        setTimeout(() => this.setState({activeModalDialog: true}), 50)
+      })
+    } else {
+      this.setState({activeModalDialog: false}, () => {
+        setTimeout(() => this.setState({activeModal: false}), 300)
+      })
+    }
   };
 
   render() {
@@ -181,22 +201,24 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="padding__horizontal__20 padding__vertical__10 border__top">
-          <span uk-toggle="target: #menu-bar">
+          <span onClick={() => this.toggleMenu(true)}>
             <img className="icon" src={menu} alt="menu"/>
           </span>
-          <div id="menu-bar" className="uk-modal-full" uk-modal="true">
-            <div className="uk-modal-dialog height__expand flex__end padding__bottom__80">
-              <button className="uk-modal-close-full uk-close-large icon-close" type="button" uk-close="true"/>
+          <div id="menu-bar" className={`uk-modal-full modal ${this.state.activeModal ? "active-modal" : ""}`}>
+            <div className={`uk-modal-dialog height__expand flex__end padding__bottom__80 ${this.state.activeModalDialog ? 'active-modal-dialog' : ''}`}>
+              <button className="uk-modal-close-full uk-close-large my-icon-close" uk-close="true" type="button" onClick={() => this.toggleMenu(false)}/>
               <div>
                 <ul className="uk-list padding__remove__horizontal">
                   {
                     this.state.menus.map((menu, index) => (
-                      <li key={`menu-${index}`} className={`padding__horizontal__10 ${!!index ? '!margin__top__15' : ''}`}>
-                        <span className={`icon-menu icon-menu-${menu.color} uk-display-inline-block`}>
-                          <img src={menu.icon} alt=""/>
-                        </span>
-                        <span className="!secondary-font-medium padding__right__15 text__medium text__bolder">{menu.name}</span>
-                      </li>
+                      <Link to={`/${menu.href}`} key={`menu-${index}`}>
+                        <li className={`padding__horizontal__10 ${!!index ? '!margin__top__15' : ''}`}>
+                          <span className={`icon-menu icon-menu-${menu.color} uk-display-inline-block`}>
+                            <img src={menu.icon} alt=""/>
+                          </span>
+                          <span className="!secondary-font-medium padding__right__15 text__medium text__bolder">{menu.name}</span>
+                        </li>
+                      </Link>
                     ))
                   }
                 </ul>

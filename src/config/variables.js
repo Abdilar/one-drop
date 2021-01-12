@@ -5,6 +5,18 @@
 export const PAGE = {
   HOME: {
     VALUE: '',
+  },
+  ACTIVITY: {
+    VALUE: 'activity',
+  },
+  BLOOD: {
+    VALUE: 'blood',
+  },
+  GLUCOSE: {
+    VALUE: 'glucose',
+  },
+  WEIGHT: {
+    VALUE: 'weight',
   }
 };
 

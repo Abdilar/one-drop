@@ -9,6 +9,10 @@ const AppRouting = () => (
   <Router history={history}>
     <Switch>
       <Route.PublicRoute path={`/${PAGE.HOME.VALUE}`} component={Page.Home} exact />
+      <Route.PublicRoute path={`/${PAGE.WEIGHT.VALUE}`} component={Page.Weight} exact />
+      <Route.PublicRoute path={`/${PAGE.BLOOD.VALUE}`} component={Page.Blood} exact />
+      <Route.PublicRoute path={`/${PAGE.GLUCOSE.VALUE}`} component={Page.Glucose} exact />
+      <Route.PublicRoute path={`/${PAGE.ACTIVITY.VALUE}`} component={Page.Activity} exact />
     </Switch>
   </Router>
 );
