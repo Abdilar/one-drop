@@ -19,7 +19,7 @@ html {
   font-size: 62.5%;
 }
 
-html, body, main {
+html, body, body > div, main {
   height: 100%;
   min-height: 100%;
 }
@@ -118,6 +118,26 @@ body > main {
 
 .\!font-black {
   @include font-family('black');
+}
+
+.\!secondary-font-regular {
+  @include secondary-font-family();
+}
+
+.\!secondary-font-bold {
+  @include secondary-font-family('bold');
+}
+
+.\!secondary-font-light {
+  @include secondary-font-family('light');
+}
+
+.\!secondary-font-medium {
+  @include secondary-font-family('medium');
+}
+
+.\!secondary-font-black {
+  @include secondary-font-family('black');
 }
 
 input:focus {

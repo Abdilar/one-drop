@@ -39,11 +39,9 @@ $new-src: (
 }
 
 @mixin font-family($type: 'regular', $lang: 'fa') {
-  @if ($lang == 'fa') {
-    font-family: '#{$name}-#{$type}', sans-serif !important;
-  }
+  font-family: '#{$name}-#{$type}', sans-serif !important;
 }
 
-@mixin new-font-family($type: 'regular') {
+@mixin secondary-font-family($type: 'regular') {
   font-family: '#{$new-name}-#{$type}', sans-serif !important;
 }

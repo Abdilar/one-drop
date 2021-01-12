@@ -1,12 +1,12 @@
 $base_path: './../../fonts';
 $path: 'icon';
-$name: 'hoa-icon';
+$icon-name: 'hoa-icon';
 
 @font-face {
   font-family: 'icon';
-  src: url('#{$base_path}/#{$path}/#{$name}.woff'),
-       url('#{$base_path}/#{$path}/#{$name}.eot'),
-       url('#{$base_path}/#{$path}/#{$name}.ttf');
+  src: url('#{$base_path}/#{$path}/#{$icon-name}.woff'),
+       url('#{$base_path}/#{$path}/#{$icon-name}.eot'),
+       url('#{$base_path}/#{$path}/#{$icon-name}.ttf');
   font-weight: normal;
   font-style: normal;
   font-display: block;
