@@ -1,0 +1,103 @@
+@import "../../asset/styles/components/font";
+$orange: #fe7603;
+$light-orange:  lighten($orange, 10%);
+$red: #f0506e;
+$light-red: lighten($red, 10%);
+
+
+.activity {
+
+  &__input {
+    & > div:first-child.orange {
+      border-radius: 50%;
+      padding: 15px;
+      display: inline-block;
+      background-color: $orange;
+    }
+
+    & > div:first-child > div.orange {
+      border-radius: 50%;
+      padding: 25px;
+      display: inline-flex !important;
+      border: 30px solid $light-orange;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        background-color: #fff;
+        top: -33px;
+        left: calc(50% - 17.5px);
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    & > div:first-child.red {
+      border-radius: 50%;
+      padding: 15px;
+      display: inline-block;
+      background-color: $red;
+    }
+
+    & > div:first-child > div.red {
+      border-radius: 50%;
+      padding: 25px;
+      display: inline-flex !important;
+      border: 30px solid $light-red;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        background-color: #fff;
+        top: -33px;
+        left: calc(50% - 17.5px);
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    & input {
+      font-size: 6rem;
+      //padding: 12.5px 0;
+      width: 100px;
+      height: 55px;
+      border: none;
+      text-align: center;
+      background-color: transparent;
+      caret-color: #fff;
+      color: #fff;
+      overflow-y: hidden;
+    }
+  }
+
+  &__description {
+    color: #fff;
+    font-size: 1.8rem;
+    position: relative;
+    top: 5px;
+  }
+
+  &__icon {
+    color: #fff !important;
+    position: relative;
+    top: -10px;
+  }
+
+  &__header {
+    height: 50%;
+  }
+}
+
+.dp__input {
+  padding: 5px;
+  border: none;
+  font-size: 1.8rem;
+  @include font-family();
+  color: #666;
+}

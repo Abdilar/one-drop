@@ -15,7 +15,7 @@ import {option} from "../config/sweetAlert";
 // import userApi from '../api/user.api';
 // import store from 'redux/store';
 // import * as env from 'environment/environment';
-// import { toastAnimationOption } from "../config/toastOption";
+import { toastAnimationOption } from "../config/toastOption";
 
 // momentJalaali.locale("fa", fa);
 

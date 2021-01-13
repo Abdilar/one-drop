@@ -1,23 +1,16 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 
 import style from "./Main.module.scss";
-import {withRouter} from "react-router-dom";
 
 class MainLayout extends React.Component {
 
-  componentDidMount() {
-    document.body.classList.add("zoom");
-  }
 
   shouldComponentUpdate(nextProps, nextState, nextContext) {
     if (this.props.location.pathname !== nextProps.location.pathname) {
       console.log('Path changed')
     }
     return true;
-  }
-
-  componentWillUnmount() {
-    document.body.classList.remove("zoom");
   }
 
   render() {

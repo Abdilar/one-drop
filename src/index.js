@@ -8,22 +8,22 @@ import AppRouting from "../src/route/app.route";
 
 import "./helper/customIcons";
 import "uikit/dist/css/uikit.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import './asset/styles/style.scss';
 
 const App = () => (
   <ReduxProvider store={store}>
     <AppRouting />
     <ToastContainer
-      position={toast.POSITION.BOTTOM_LEFT}
-      autoClose={variables.TOAST.AUTO_CLOSE_TIME}
+      position="bottom-center"
+      autoClose={5000}
       hideProgressBar={false}
-      limit={variables.TOAST.LIMIT}
-      transition={Slide}
-      newestOnTop
+      newestOnTop={false}
       closeOnClick
+      rtl={false}
       pauseOnFocusLoss
       draggable
-      pauseOnHover
+      pauseOnHover={false}
     />
   </ReduxProvider>
 );
