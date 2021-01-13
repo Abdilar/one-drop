@@ -29,7 +29,7 @@ class Activity extends React.Component {
   render() {
     return (
       <section className="flex__column height__expand">
-        <Header onAccept={() => this.handleAccept()}/>
+        <Header onAccept={() => this.handleAccept()} title="افزودن فعالیت"/>
         <ActivityTheme description="دقیقه" onChange={this.handleChange} color="orange">
           <div className="padding__horizontal__20 padding__vertical__20">
             <button className={`activity-button ${this.state.activeButton === 'low' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('low')}>کم</button>

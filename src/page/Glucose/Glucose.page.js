@@ -27,7 +27,7 @@ class Glucose extends React.Component {
   render() {
     return (
       <section className="flex__column height__expand">
-        <Header onAccept={() => this.handleAccept()}/>
+        <Header onAccept={() => this.handleAccept()} title="افزودن گلوکز"/>
         <ActivityTheme description="mg/dL" onChange={this.handleChange} color="red" />
       </section>
     );
