@@ -9,6 +9,11 @@ const WeightTheme = (props) => {
   const [secondValue, setSecondValue] = useState("0");
   const date = jalaliDate(Date.now());
 
+  useEffect(() => {
+    const datepicker = document.getElementsByClassName('datepicker-input')[0];
+    datepicker.addEventListener('focus', (e) => datepicker.blur());
+  }, []);
+
   const handleFirstChange = ({target}) => {
     setFirstValue(target.value);
     props.onChangeFirst(!!+target.value ? target.value : '');
