@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import DatePicker from 'react-datepicker2';
 import {isEmpty, jalaliDate} from "../../helper/functions";
 
@@ -7,6 +7,11 @@ import "./ActivityTheme.style.scss"
 const ActivityTheme = (props) => {
   const [value, setValue] = useState("0");
   const date = jalaliDate(Date.now());
+
+  useEffect(() => {
+    const datepicker = document.getElementsByClassName('datepicker-input')[0]
+    datepicker.addEventListener('focus', (e) => e.stopPropagation());
+  }, []);
 
   const handleChange = ({target}) => {
     setValue(target.value);
