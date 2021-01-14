@@ -13,12 +13,10 @@ $light-red: lighten($red, 10%);
       padding: 15px;
       display: inline-block;
       background-color: $orange;
-      //max-width: 145px;
     }
 
     & > div:first-child > div.orange {
       border-radius: 50%;
-      max-width: 215px;
       padding: 25px;
       display: inline-flex !important;
       border: 30px solid $light-orange;
@@ -42,12 +40,10 @@ $light-red: lighten($red, 10%);
       padding: 15px;
       display: inline-block;
       background-color: $red;
-      max-width: 145px;
     }
 
     & > div:first-child > div.red {
       border-radius: 50%;
-      max-width: 215px;
       padding: 25px;
       display: inline-flex !important;
       border: 30px solid $light-red;
@@ -67,9 +63,9 @@ $light-red: lighten($red, 10%);
     }
 
     & input {
-      font-size: 4rem;
+      font-size: 3.5rem;
       //padding: 12.5px 0;
-      width: 100px;
+      width: 90px;
       height: 55px;
       border: none;
       text-align: center;
@@ -82,7 +78,7 @@ $light-red: lighten($red, 10%);
 
   &__description {
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     position: relative;
     top: 5px;
   }
@@ -101,7 +97,7 @@ $light-red: lighten($red, 10%);
 .dp__input {
   padding: 5px;
   border: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   @include font-family();
   color: #666;
 }
