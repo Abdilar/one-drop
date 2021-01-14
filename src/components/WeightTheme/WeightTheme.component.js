@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { DatePicker } from "jalali-react-datepicker";
-import {isEmpty, isFunction} from "../../helper/functions";
+import DatePicker from 'react-datepicker2';
+import {isEmpty, isFunction, jalaliDate} from "../../helper/functions";
 
 import "./WeightTheme.style.scss"
 
 const WeightTheme = (props) => {
   const [firstValue, setFirstValue] = useState("0");
   const [secondValue, setSecondValue] = useState("0");
+  const date = jalaliDate(Date.now());
 
   const handleFirstChange = ({target}) => {
     setFirstValue(target.value);
@@ -37,7 +38,12 @@ const WeightTheme = (props) => {
         <div>
           <div dir="ltr" className="padding__vertical__15 border__bottom padding__horizontal__20 flex__center__vertical">
             <span className="margin__right__20"><i className="icon-calendar !text__xxlarge" /></span>
-            <DatePicker timePicker={false} />
+            <DatePicker
+              onChange={value => console.log('time change')}
+              isGregorian={false}
+              value={date}
+              timePicker={false}
+            />
           </div>
           <div dir="ltr" className="padding__vertical__15 border__bottom padding__horizontal__20 flex__center__vertical">
             <span className="margin__right__20"><i className="icon-clock-square !text__xxlarge" /></span>

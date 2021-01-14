@@ -173,9 +173,6 @@ class Home extends React.Component {
         </div>
         <div className="overflow-y-auto overflow-x-hidden flex-1">
           <div className="background__muted padding__horizontal__20 padding__vertical__15 border__bottom">
-            <p className="text__medium !secondary-font-medium">1 برنامه دارویی</p>
-          </div>
-          <div className="background__muted padding__horizontal__20 padding__vertical__15 border__bottom">
             <p className="text__medium !secondary-font-medium">شنبه، ۲۱ دی ماه، ۱۳۹۹</p>
           </div>
           <div className="padding__horizontal__20">
@@ -201,9 +198,21 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="padding__horizontal__20 padding__vertical__10 border__top">
-          <span onClick={() => this.toggleMenu(true)}>
-            <img className="icon" src={menu} alt="menu"/>
-          </span>
+          <div className="uk-grid-small uk-child-width-1-4  " uk-grid="true">
+            <span onClick={() => this.toggleMenu(true)}>
+              <img className="icon" src={menu} alt="menu"/>
+            </span>
+            <span className="text__center">
+              <i className="icon-note !text__xxlarge" />
+            </span>
+            <span className="text__center">
+              <i className="icon-message-circle !text__xxlarge" />
+            </span>
+            <span className="text__left">
+              <i className="icon-setting !text__xxlarge" />
+            </span>
+          </div>
+
           <div id="menu-bar" className={`uk-modal-full modal ${this.state.activeModal ? "active-modal" : ""}`}>
             <div className={`uk-modal-dialog height__expand flex__end padding__bottom__80 ${this.state.activeModalDialog ? 'active-modal-dialog' : ''}`}>
               <button className="uk-modal-close-full uk-close-large my-icon-close" uk-close="true" type="button" onClick={() => this.toggleMenu(false)}/>

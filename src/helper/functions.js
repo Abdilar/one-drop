@@ -1,12 +1,12 @@
 /*
 * Functions are defined here. They are global functions
 * */
-// import momentJalaali from 'moment-jalaali';
-// import fa from 'moment/locale/fa';
+// import moment from 'moment';
+import momentJalaali from 'moment-jalaali';
+import fa from 'moment/locale/fa';
 import React from 'react';
 import {toast as toastify} from "react-toastify";
 import Swal from "sweetalert2";
-import moment from 'moment';
 import history from '../helper/history';
 import errorMessage from "../asset/data/error";
 import patterns from "../asset/data/pattern";
@@ -17,7 +17,7 @@ import {option} from "../config/sweetAlert";
 // import * as env from 'environment/environment';
 import { toastAnimationOption } from "../config/toastOption";
 
-// momentJalaali.locale("fa", fa);
+momentJalaali.locale("fa", fa);
 
 /*
 * Show error toast message
@@ -110,14 +110,14 @@ export function slugify(text = "") {
 * @param {String} format - format of date
 * @param {Boolean} milisecond - if it's milisecond not set it
 * */
-// export function jalaliDate(timestamp, format = 'jYYYY/jMM/jDD', milisecond = true) {
-//   return momentJalaali(timestamp * (milisecond ? 1 : 1000)).format(format);
-// }
-
-export function getDate(timestamp, format = 'YYYY/MM/DD', milisecond = true) {
-  const time = timestamp * (milisecond ? 1 : 1000);
-  return moment(time).format(format);
+export function jalaliDate(timestamp, milisecond = true) {
+  return momentJalaali(timestamp * (milisecond ? 1 : 1000));
 }
+
+// export function getDate(timestamp, format = 'YYYY/MM/DD', milisecond = true) {
+//   const time = timestamp * (milisecond ? 1 : 1000);
+//   return moment(time).format(format);
+// }
 
 export function addDays(date, days) {
   let result = new Date(date);
@@ -130,9 +130,9 @@ export function addDays(date, days) {
 * @param {Number} timestamp - The timestamp
 * @param {Boolean} milisecond - if it's milisecond not set it
 * */
-export function timeAgo(timestamp, milisecond = true) {
-  return moment(timestamp * (milisecond ? 1 : 1000)).fromNow();
-}
+// export function timeAgo(timestamp, milisecond = true) {
+//   return moment(timestamp * (milisecond ? 1 : 1000)).fromNow();
+// }
 
 /*
 * Convert text to masked text

@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import { DatePicker } from "jalali-react-datepicker";
-import {isEmpty} from "../../helper/functions";
+import React, {useState} from 'react';
+import DatePicker from 'react-datepicker2';
+import {isEmpty, jalaliDate} from "../../helper/functions";
 
 import "./ActivityTheme.style.scss"
 
 const ActivityTheme = (props) => {
   const [value, setValue] = useState("0");
+  const date = jalaliDate(Date.now());
 
   const handleChange = ({target}) => {
     setValue(target.value);
@@ -28,7 +29,13 @@ const ActivityTheme = (props) => {
         <div>
           <div dir="ltr" className="padding__vertical__15 border__bottom padding__horizontal__20 flex__center__vertical">
             <span className="margin__right__20"><i className="icon-calendar !text__xxlarge" /></span>
-            <DatePicker timePicker={false} />
+            {/*<DatePicker timePicker={false} />*/}
+            <DatePicker
+              onChange={value => console.log('time change')}
+              isGregorian={false}
+              value={date}
+              timePicker={false}
+            />
           </div>
         </div>
       </div>
