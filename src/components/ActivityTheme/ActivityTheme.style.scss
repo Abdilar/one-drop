@@ -13,10 +13,12 @@ $light-red: lighten($red, 10%);
       padding: 15px;
       display: inline-block;
       background-color: $orange;
+      max-width: 145px;
     }
 
     & > div:first-child > div.orange {
       border-radius: 50%;
+      max-width: 215px;
       padding: 25px;
       display: inline-flex !important;
       border: 30px solid $light-orange;
@@ -40,10 +42,12 @@ $light-red: lighten($red, 10%);
       padding: 15px;
       display: inline-block;
       background-color: $red;
+      max-width: 145px;
     }
 
     & > div:first-child > div.red {
       border-radius: 50%;
+      max-width: 215px;
       padding: 25px;
       display: inline-flex !important;
       border: 30px solid $light-red;
@@ -63,7 +67,7 @@ $light-red: lighten($red, 10%);
     }
 
     & input {
-      font-size: 6rem;
+      font-size: 4rem;
       //padding: 12.5px 0;
       width: 100px;
       height: 55px;
