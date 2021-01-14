@@ -171,7 +171,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <div className="overflow-y-auto overflow-x-hidden">
+        <div className="overflow-y-auto overflow-x-hidden flex-1">
           <div className="background__muted padding__horizontal__20 padding__vertical__15 border__bottom">
             <p className="text__medium !secondary-font-medium">1 برنامه دارویی</p>
           </div>
