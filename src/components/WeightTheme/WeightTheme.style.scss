@@ -1,0 +1,58 @@
+@import "../../asset/styles/components/font";
+$orange: #fe7603;
+$light-orange:  lighten($orange, 10%);
+$red: #f0506e;
+$light-red: lighten($red, 10%);
+
+
+.weight {
+
+  &__input {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & input {
+      font-size: 4rem;
+      //padding: 12.5px 0;
+      width: 80px;
+      height: 45px;
+      border: none;
+      text-align: center;
+      background-color: transparent;
+      caret-color: #000;
+      color: #333;
+      overflow-y: hidden;
+      border-bottom: 1px solid;
+      padding-bottom: 20px;
+      margin: 0 auto 20px;
+    }
+  }
+
+
+
+  &__header {
+    height: 50%;
+  }
+}
+
+.dp__input, .time {
+  padding: 5px;
+  border: none;
+  font-size: 1.6rem;
+  @include font-family('light');
+  color: #666;
+}
+
+
+.input__description {
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.input__separator {
+  font-size: 6rem;
+  padding: 0 20px;
+  font-family: 'IranSans-light';
+}

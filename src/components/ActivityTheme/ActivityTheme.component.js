@@ -15,7 +15,7 @@ const ActivityTheme = (props) => {
   return (
     <section className="flex-1">
       <div className="activity__header">
-        <div className="activity__input text__center padding__vertical__15 border__bottom">
+        <div className="activity__input text__center padding__vertical__25 border__bottom">
           <div className={props.color}>
             <div className={`flex__column ${props.color}`}>
               <span className="activity__icon" uk-icon="icon: grid" />
