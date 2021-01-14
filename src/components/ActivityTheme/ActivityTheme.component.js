@@ -9,8 +9,8 @@ const ActivityTheme = (props) => {
   const date = jalaliDate(Date.now());
 
   useEffect(() => {
-    const datepicker = document.getElementsByClassName('datepicker-input')[0]
-    datepicker.addEventListener('focus', (e) => e.stopPropagation());
+    const datepicker = document.getElementsByClassName('datepicker-input')[0];
+    datepicker.addEventListener('focus', (e) => datepicker.blur());
   }, []);
 
   const handleChange = ({target}) => {
