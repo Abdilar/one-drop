@@ -27,7 +27,6 @@ class MainLayout extends React.Component {
   setTimer = () => {
     begin = end;
     end = window.performance.now()
-    // isEnd ? end = window.performance.now() : begin = window.performance.now();
   };
 
   getTimeSpend = () => end - begin;

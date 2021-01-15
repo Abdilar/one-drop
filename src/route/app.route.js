@@ -13,6 +13,7 @@ const AppRouting = () => (
       <Route.PublicRoute path={`/${PAGE.BLOOD.VALUE}`} component={Page.Blood} exact />
       <Route.PublicRoute path={`/${PAGE.GLUCOSE.VALUE}`} component={Page.Glucose} exact />
       <Route.PublicRoute path={`/${PAGE.ACTIVITY.VALUE}`} component={Page.Activity} exact />
+      <Route.PublicRoute path={`/${PAGE.REPORT.VALUE}`} component={Page.Report} exact />
     </Switch>
   </Router>
 );

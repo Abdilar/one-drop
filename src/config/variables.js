@@ -17,7 +17,17 @@ export const PAGE = {
   },
   WEIGHT: {
     VALUE: 'weight',
+  },
+  REPORT: {
+    VALUE: 'report',
   }
+};
+
+export const PAGE_MAP = {
+  [PAGE.WEIGHT.VALUE]: "وزن",
+  [PAGE.BLOOD.VALUE]: "فشار خون",
+  [PAGE.GLUCOSE.VALUE]: "گلوکز",
+  [PAGE.ACTIVITY.VALUE]: "فعالیت",
 };
 
 export const WEIGHT = PAGE.WEIGHT.VALUE;
@@ -26,6 +36,7 @@ export const GLUCOSE = PAGE.GLUCOSE.VALUE;
 export const ACTIVITY = PAGE.ACTIVITY.VALUE;
 export const DONE = 'done';
 export const FAILED = 'failed';
+export const LIMIT = 4;
 
 export const DEFAULT_GOALS = [WEIGHT, BLOOD, GLUCOSE, ACTIVITY];
 

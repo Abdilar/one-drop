@@ -208,9 +208,9 @@ class Home extends React.Component {
             <span className="text__center">
               <i className="icon-message-circle !text__xxlarge" />
             </span>
-            <span className="text__left">
+            <Link to={`/${PAGE.REPORT.VALUE}`} className="text__left">
               <i className="icon-setting !text__xxlarge" />
-            </span>
+            </Link>
           </div>
 
           <div id="menu-bar" className={`uk-modal-full modal ${this.state.activeModal ? "active-modal" : ""}`}>
