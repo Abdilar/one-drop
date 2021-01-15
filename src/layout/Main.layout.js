@@ -2,8 +2,8 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {getPath} from "../helper/functions";
-import {setLog} from "../redux/action/general.action";
-import {DEFAULT_GOALS} from "../config/variables";
+import {setLogData, setCurrentStep, setTimeSpend} from "../redux/action/general.action";
+import {DEFAULT_GOALS, DONE} from "../config/variables";
 
 import style from "./Main.module.scss";
 
@@ -16,15 +16,15 @@ class MainLayout extends React.Component {
     this.setTimer();
   }
 
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
+  async shouldComponentUpdate(nextProps, nextState, nextContext) {
     if (this.props.location.pathname !== nextProps.location.pathname) {
-      this.setTimer(true);
-      this.setLog();
+      this.setTimer();
+      await this.setLog(this.props.location.pathname);
     }
     return true;
   }
 
-  setTimer = (isEnd = false) => {
+  setTimer = () => {
     begin = end;
     end = window.performance.now()
     // isEnd ? end = window.performance.now() : begin = window.performance.now();
@@ -32,13 +32,19 @@ class MainLayout extends React.Component {
 
   getTimeSpend = () => end - begin;
 
-  setLog = () => {
-    const {currentStep, setLog} = this.props;
+  setLog = async (path) => {
+    const {currentStep, setLogData, general, setCurrentStep, setTimeSpend} = this.props;
+    if (currentStep >= DEFAULT_GOALS.length) return;
     const currentGoal = DEFAULT_GOALS[currentStep];
-    const paths = getPath();
+    const paths = getPath(path);
     const page = paths[0] ? paths[0] : "home";
     const data = {page, timeSpend: this.getTimeSpend()};
-    setLog(currentGoal, data)
+    await setLogData(currentGoal, data);
+
+    const state = general[currentGoal].state;
+    const preTimeSpend = general[currentGoal].timeSpend;
+    state === DONE && setTimeSpend(currentGoal, preTimeSpend + this.getTimeSpend());
+    state === DONE && setCurrentStep(currentStep + 1);
   };
 
   render() {
@@ -55,11 +61,14 @@ class MainLayout extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  currentStep: state.general.currentStep
+  currentStep: state.general.currentStep,
+  general: state.general
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setLog: (name, data) => dispatch(setLog(name, data))
+  setLogData: (name, data) => dispatch(setLogData(name, data)),
+  setCurrentStep: (step) => dispatch(setCurrentStep(step)),
+  setTimeSpend: (name, time) => dispatch(setTimeSpend(name, time)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MainLayout));

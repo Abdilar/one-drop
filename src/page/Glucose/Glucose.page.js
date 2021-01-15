@@ -1,7 +1,10 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
 import {ActivityTheme, Header} from "../../components";
 import {errorToast, isEmpty} from "../../helper/functions";
-import {PAGE} from "../../config/variables";
+import {GLUCOSE, DEFAULT_GOALS, DONE, PAGE} from "../../config/variables";
+import {setStateData} from "../../redux/action/general.action";
 
 import "./Glucose.style.scss";
 
@@ -17,10 +20,15 @@ class Glucose extends React.Component {
     this.setState({inputValue: value})
   };
 
-  handleAccept = () => {
+  handleAccept = async () => {
     const isValid = Object.keys(this.state).every(state => !isEmpty(this.state[state]));
-    !isValid && errorToast('اطلاعات را کامل وارد کنید.');
-    isValid && this.props.history.push(PAGE.HOME.VALUE);
+    if (isValid) {
+      const currentGoal = DEFAULT_GOALS[this.props.currentStep];
+      currentGoal === GLUCOSE && await this.props.setState(currentGoal, DONE);
+      this.props.history.push(PAGE.HOME.VALUE);
+    } else {
+      errorToast('اطلاعات را کامل وارد کنید.');
+    }
     console.log('Is valid: ', isValid)
   };
 
@@ -34,4 +42,11 @@ class Glucose extends React.Component {
   }
 }
 
-export default Glucose;
+const mapDispatchToProps = (dispatch) => ({
+  setState: (name, state) => dispatch(setStateData(name, state)),
+});
+const mapStateToProps = (state) => ({
+  currentStep: state.general.currentStep,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Glucose));

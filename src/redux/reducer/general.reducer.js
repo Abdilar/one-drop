@@ -3,7 +3,7 @@ import {
   SET_LOG,
   SET_TIME_SPEND,
   SET_STATE,
-  SET_CURRENT_STEP
+  SET_CURRENT_STEP,
 } from '../types';
 
 const initialState = {
