@@ -660,7 +660,7 @@ export function getAbbrName(firstName, lastName, defaultValue = 'D') {
 }
 
 
-export function getFilterName(pathname) {
+export function getPath(pathname) {
   const path = (pathname && pathname.split('/')) || window.location.pathname.split('/');
   const result = [];
   path.forEach(item => {
