@@ -36,7 +36,7 @@ const ActivityTheme = (props) => {
             <span className="margin__right__20"><i className="icon-calendar !text__xxlarge" /></span>
             {/*<DatePicker timePicker={false} />*/}
             <DatePicker
-              onChange={value => console.log('time change')}
+              onChange={value => console.log()}
               isGregorian={false}
               value={date}
               timePicker={false}

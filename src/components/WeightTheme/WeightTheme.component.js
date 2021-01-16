@@ -44,7 +44,7 @@ const WeightTheme = (props) => {
           <div dir="ltr" className="padding__vertical__15 border__bottom padding__horizontal__20 flex__center__vertical">
             <span className="margin__right__20"><i className="icon-calendar !text__xxlarge" /></span>
             <DatePicker
-              onChange={value => console.log('time change')}
+              onChange={value => console.log()}
               isGregorian={false}
               value={date}
               timePicker={false}

@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {Header} from "../../components";
-import {DEFAULT_GOALS, DONE} from "../../config/variables";
+import {DEFAULT_GOALS, DONE, PAGE} from "../../config/variables";
 
 import ReactExport from "react-export-excel";
 
@@ -74,7 +74,7 @@ class Report extends React.Component {
   render() {
     return (
       <section className="flex__column height__expand">
-        <Header title="گزارش" />
+        <Header onBack={() => this.props.history.push(PAGE.HOME.VALUE)} title="گزارش" />
         <div className="padding__vertical__50 text__center">
           <ExcelFile element={<button className="button__primary padding__vertical__5 padding__horizontal__10">دانلود گزارش</button>}>
             <ExcelSheet dataSet={this.state.dataSet} name="Report" />

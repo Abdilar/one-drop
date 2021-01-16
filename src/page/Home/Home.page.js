@@ -140,7 +140,7 @@ class Home extends React.Component {
               <span>قدم</span>
             </div>
             <div className="flex__center__horizontal">
-              <span className="margin__left__5 !font-bold">02:00</span>
+              <span className="margin__left__5 !font-bold">2</span>
               <span>ساعت</span>
             </div>
           </div>

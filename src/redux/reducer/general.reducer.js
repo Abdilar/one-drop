@@ -1,6 +1,7 @@
 import {DEFAULT_GOALS, FAILED} from '../../config/variables';
 import {
   SET_LOG,
+  SET_LOGS,
   SET_TIME_SPEND,
   SET_STATE,
   SET_CURRENT_STEP,
@@ -43,6 +44,8 @@ export default (state = initialState, action) => {
       const logs = [...state[action.name].logs];
       logs.push(action.data);
       return {...state, [action.name]: {...state[action.name], logs}};
+    case SET_LOGS:
+      return {...state, [action.name]: {...state[action.name], logs: []}};
     default:
       return state;
   }
