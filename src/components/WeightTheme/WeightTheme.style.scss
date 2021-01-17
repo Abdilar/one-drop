@@ -45,6 +45,13 @@ $light-red: lighten($red, 10%);
   color: #666;
 }
 
+.best-datepicker {
+  & .datepicker-input, & .time {
+    font-size: 2rem;
+    color: #222 !important;
+  }
+}
+
 
 .input__description {
   font-size: 1.4rem;

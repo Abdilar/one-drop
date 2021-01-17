@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {setStateData} from "../../redux/action/general.action";
-import {Header, WeightTheme} from "../../components";
+import {Footer, Header, WeightTheme} from "../../components";
 import {errorAlert, errorToast, isEmpty} from "../../helper/functions";
 import {DEFAULT_GOALS, DONE, PAGE, BLOOD, PAGE_MAP, WEIGHT} from "../../config/variables";
 
@@ -11,15 +11,15 @@ import "./Blood.style.scss";
 class Blood extends React.Component {
   state = {
     bloodValue: "",
-    bloodValue2: "",
+    bloodValue2: ""
   };
 
   handleChange = (value) => {
-    this.setState({bloodValue: value})
+    this.setState({bloodValue: value});
   };
 
   handleChangeSecond = (value) => {
-    this.setState({bloodValue2: value})
+    this.setState({bloodValue2: value});
   };
 
   handleAccept = async () => {
@@ -45,20 +45,29 @@ class Blood extends React.Component {
   };
 
   render() {
+    const title = this.props.isBest ? "فشارخون خود را وارد کنید" : "افزودن فشارخون";
+
     return (
-      <section className="flex__column height__expand">
-        <Header onAccept={this.handleAccept} onBack={this.handleBack}  title="افزودن فشار خون" />
-        <WeightTheme firstDescription="سیستولیک" secondDescription="دیاستولیک" onChangeFirst={this.handleChange} onChangeSecond={this.handleChangeSecond} />
-      </section>
+      <React.Fragment>
+        <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
+          <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
+          <WeightTheme isBest={this.props.isBest} firstDescription={"سیستولیک"} secondDescription="دیاستولیک" onChangeFirst={this.handleChange}
+                       onChangeSecond={this.handleChangeSecond}/>
+        </section>
+        {
+          this.props.isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack}/>
+        }
+      </React.Fragment>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setState: (name, state) => dispatch(setStateData(name, state)),
+  setState: (name, state) => dispatch(setStateData(name, state))
 });
 const mapStateToProps = (state) => ({
   currentStep: state.general.currentStep,
+  isBest: state.layout.isBest
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Blood));

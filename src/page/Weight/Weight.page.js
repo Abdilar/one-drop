@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {Header, WeightTheme} from "../../components";
+import {Footer, Header, WeightTheme} from "../../components";
 import {errorToast, isEmpty, errorAlert} from "../../helper/functions";
 import {setStateData} from "../../redux/action/general.action";
 import {PAGE, DONE, DEFAULT_GOALS, WEIGHT, PAGE_MAP} from "../../config/variables";
@@ -41,11 +41,18 @@ class Weight extends React.Component {
   };
 
   render() {
+    const title = this.props.isBest ? "وزن خود را وارد کنید" : "افزودن وزن";
+    const description = this.props.isBest ? "کیلوگرم" : "Ib";
     return (
-      <section className="flex__column height__expand">
-        <Header onAccept={this.handleAccept} onBack={this.handleBack} title="افزودن وزن" />
-        <WeightTheme firstDescription="Ib" onChangeFirst={this.handleChange} />
-      </section>
+      <React.Fragment>
+        <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
+          <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
+          <WeightTheme isBest={this.props.isBest} firstDescription={description} onChangeFirst={this.handleChange} />
+        </section>
+        {
+          this.props.isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack} />
+        }
+      </React.Fragment>
     );
   }
 }
@@ -55,6 +62,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 const mapStateToProps = (state) => ({
   currentStep: state.general.currentStep,
+  isBest: state.layout.isBest,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Weight));
