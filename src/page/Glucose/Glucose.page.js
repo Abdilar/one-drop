@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActivityTheme, Header} from "../../components";
+import {ActivityTheme, Footer, Header} from "../../components";
 import {errorAlert, errorToast, isEmpty} from "../../helper/functions";
 import {GLUCOSE, DEFAULT_GOALS, DONE, PAGE, ACTIVITY, PAGE_MAP} from "../../config/variables";
 import {setStateData} from "../../redux/action/general.action";
@@ -9,9 +9,15 @@ import {setStateData} from "../../redux/action/general.action";
 import "./Glucose.style.scss";
 
 class Glucose extends React.Component {
+  themRef = React.createRef();
   state = {
     inputValue: ""
   };
+
+  componentDidMount() {
+    this.props.isBest && this.themRef.current.focus();
+    this.props.isBest && (this.themRef.current.value = "");
+  }
 
   handleClick = (type) => {
     this.setState({activeButton: type})
@@ -44,11 +50,19 @@ class Glucose extends React.Component {
   };
 
   render() {
+    const {isBest} = this.props;
+    const title = isBest ? "میزاان گلوکز را وارد کنید" : "افزودن گلوکز";
+
     return (
-      <section className="flex__column height__expand">
-        <Header onAccept={this.handleAccept} onBack={this.handleBack} title="افزودن گلوکز"/>
-        <ActivityTheme description="mg/dL" onChange={this.handleChange} color="red" />
-      </section>
+      <React.Fragment>
+        <section className={`flex__column ${isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
+          <Header isBest={isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
+          <ActivityTheme ref={this.themRef} isBest={isBest} description="mg/dL" onChange={this.handleChange} color="red" />
+        </section>
+        {
+          isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack}/>
+        }
+      </React.Fragment>
     );
   }
 }
@@ -58,6 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 const mapStateToProps = (state) => ({
   currentStep: state.general.currentStep,
+  isBest: state.layout.isBest
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Glucose));

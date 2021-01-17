@@ -17,6 +17,7 @@ class Blood extends React.Component {
 
   componentDidMount() {
     this.props.isBest && this.themRef.current.focus();
+    this.props.isBest && (this.themRef.current.value = "");
   }
 
   handleChange = (value) => {
@@ -50,7 +51,7 @@ class Blood extends React.Component {
   };
 
   render() {
-    const title = this.props.isBest ? "فشارخون خود را وارد کنید" : "افزودن فشارخون";
+    const title = this.props.isBest ? "فشارخون را وارد کنید" : "افزودن فشارخون";
 
     return (
       <React.Fragment>

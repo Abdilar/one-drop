@@ -25,8 +25,8 @@ const WeightTheme = React.forwardRef((props, ref) => {
 
   return (
     <section className="flex-1">
-      <div className={`${!props.isBest ? "weight__header" : ""}`}>
-        <div className="weight__input text__center padding__vertical__25 border__bottom">
+      <div className={`${!props.isBest ? "weight__header" : "padding__horizontal__20"}`}>
+        <div className={`weight__input text__center padding__vertical__25 border__bottom ${props.isBest ? "!padding__bottom__80" : ""}`}>
           {
             isFunction(props.onChangeSecond) && (
               <div className="flex__column flex__center__horizontal">
@@ -44,7 +44,7 @@ const WeightTheme = React.forwardRef((props, ref) => {
           {
             props.isBest ? (
               <React.Fragment>
-                <div className="padding__vertical__15 border__bottom padding__horizontal__20">
+                <div className="padding__vertical__15 border__bottom">
                   <div className="flex__center__vertical ">
                     <span className="margin__left__15"><i className="icon-calendar !text__xlarge" /></span>
                     <span className="text__large">تاریخ</span>
@@ -58,7 +58,7 @@ const WeightTheme = React.forwardRef((props, ref) => {
                     />
                   </div>
                 </div>
-                <div className="padding__vertical__15 border__bottom padding__horizontal__20">
+                {/*<div className="padding__vertical__15 border__bottom padding__horizontal__20">
                   <div className="flex__center__vertical ">
                     <span className="margin__left__15"><i className="icon-clock-square !text__xlarge" /></span>
                     <span className="text__large">زمان</span>
@@ -66,7 +66,7 @@ const WeightTheme = React.forwardRef((props, ref) => {
                   <div className={`padding__top__5 ${props.isBest ? "best-datepicker" : ""}`}>
                     <span className="time">12:40</span>
                   </div>
-                </div>
+                </div>*/}
               </React.Fragment>
             ) : (
               <React.Fragment>

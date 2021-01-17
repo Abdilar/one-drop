@@ -72,7 +72,7 @@ class MainLayout extends React.Component {
       <React.Fragment>
         <div className={style.container}>
           <div className={style.container__wrapper} id="canvas-container">
-            {this.props.isBest ? <BestCase>{this.props.children}</BestCase> : this.props.children}
+            {this.props.isBest ? <BestCase showName={!getPath().length}>{this.props.children}</BestCase> : this.props.children}
           </div>
         </div>
       </React.Fragment>

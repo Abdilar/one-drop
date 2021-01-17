@@ -143,3 +143,9 @@ $green-color: #8BC34A;
     background-color: rgba(#fff, .2);
   }
 }
+
+.cards {
+  & > div:nth-of-type(4), & > div:nth-of-type(3) {
+    margin-top: 30px;
+  }
+}

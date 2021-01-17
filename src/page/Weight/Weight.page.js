@@ -16,6 +16,7 @@ class Weight extends React.Component {
 
   componentDidMount() {
     this.props.isBest && this.themRef.current.focus();
+    this.props.isBest && (this.themRef.current.value = "");
   }
 
   handleChange = (value) => {
@@ -46,7 +47,7 @@ class Weight extends React.Component {
   };
 
   render() {
-    const title = this.props.isBest ? "وزن خود را وارد کنید" : "افزودن وزن";
+    const title = this.props.isBest ? "وزن را وارد کنید" : "افزودن وزن";
     const description = this.props.isBest ? "کیلوگرم" : "Ib";
     return (
       <React.Fragment>

@@ -4,7 +4,7 @@ import {isEmpty, jalaliDate} from "../../helper/functions";
 
 import "./ActivityTheme.style.scss"
 
-const ActivityTheme = (props) => {
+const ActivityTheme = React.forwardRef((props, ref) => {
   const [value, setValue] = useState("0");
   const date = jalaliDate(Date.now());
 
@@ -20,21 +20,32 @@ const ActivityTheme = (props) => {
 
   return (
     <section className="flex-1">
-      <div className="activity__header">
-        <div className="activity__input text__center padding__vertical__25 border__bottom">
-          <div className={props.color}>
-            <div className={`flex__column ${props.color}`}>
-              <span className="activity__icon" uk-icon="icon: grid" />
-              <input dir="ltr" type="tel" value={value} onChange={handleChange}/>
-              <span className="activity__description">{props.description}</span>
-            </div>
-          </div>
-          {!isEmpty(props.children) && props.children}
+      <div className={`${!props.isBest ? "activity__header" : "padding__horizontal__20"}`}>
+        <div className={`${props.isBest ? "best-input flex__column" : ""} activity__input text__center padding__vertical__25 border__bottom`}>
+          {
+            props.isBest ? (
+              <div className="flex__column flex__center__horizontal">
+                <input ref={ref} tabIndex="0" dir="ltr" type="tel" value={value} onChange={handleChange} />
+                <span className="activity__description">{props.description}</span>
+              </div>
+              ) : (
+              <div className={props.color}>
+                <div className={`flex__column ${props.color}`}>
+                  <span className="activity__icon" uk-icon="icon: grid" />
+                  <input ref={ref} dir="ltr" type="tel" value={value} onChange={handleChange}/>
+                  <span className="activity__description">{props.description}</span>
+                </div>
+              </div>
+            )
+          }
+          {
+            !isEmpty(props.children) && props.children
+          }
         </div>
         <div>
           {
             props.isBest ? (
-              <div className="padding__vertical__15 border__bottom padding__horizontal__20">
+              <div className="padding__vertical__15 border__bottom">
                 <div className="flex__center__vertical ">
                   <span className="margin__left__15"><i className="icon-calendar !text__xlarge" /></span>
                   <span className="text__large">تاریخ</span>
@@ -64,7 +75,7 @@ const ActivityTheme = (props) => {
       </div>
     </section>
   )
-};
+});
 
 
 export default ActivityTheme;

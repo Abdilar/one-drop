@@ -9,10 +9,16 @@ import {setStateData} from "../../redux/action/general.action";
 import "./Activity.style.scss";
 
 class Activity extends React.Component {
+  themRef = React.createRef();
   state = {
     inputValue: "",
     activeButton: ""
   };
+
+  componentDidMount() {
+    this.props.isBest && this.themRef.current.focus();
+    this.props.isBest && (this.themRef.current.value = "");
+  }
 
   handleClick = (type) => {
     this.setState({activeButton: type})
@@ -45,22 +51,25 @@ class Activity extends React.Component {
   };
 
   render() {
-    const title = this.props.isBest ? "میزاان فعالیت خود را وارد کنید" : "افزودن فعالعیت";
+    const {isBest} = this.props;
+    const {activeButton} = this.state;
+    const title = isBest ? "میزاان فعالیت را وارد کنید" : "افزودن فعالعیت";
 
     return (
       <React.Fragment>
-        <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
-          <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
-          <ActivityTheme ref={this.themRef} isBest={this.props.isBest} description="دقیقه" onChange={this.handleChange} color="orange">
-            <div className="padding__horizontal__20 padding__vertical__20">
-              <button className={`activity-button ${this.state.activeButton === 'low' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('low')}>کم</button>
-              <button className={`activity-button ${this.state.activeButton === 'med' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('med')}>نرمال</button>
-              <button className={`activity-button ${this.state.activeButton === 'hrd' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('hrd')}>زیاد</button>
+        <section className={`flex__column ${isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
+          <Header isBest={isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
+          <ActivityTheme ref={this.themRef} isBest={isBest} description="دقیقه" onChange={this.handleChange} color="orange">
+            {isBest && <h4 className="margin__remove padding__right__10 width__expand text__right">شدت فعالیت را انتخاب کنید</h4>}
+            <div className={`padding__vertical__20 ${isBest ? "width__expand box__border display__flex" : "padding__horizontal__20"}`}>
+              <button className={`activity-button ${isBest ? "best-button" : ""} ${activeButton === 'low' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('low')}>کم</button>
+              <button className={`activity-button ${isBest ? "best-button" : ""} ${activeButton === 'med' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('med')}>نرمال</button>
+              <button className={`activity-button ${isBest ? "best-button" : ""} ${activeButton === 'hrd' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('hrd')}>زیاد</button>
             </div>
           </ActivityTheme>
         </section>
         {
-          this.props.isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack}/>
+          isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack}/>
         }
       </React.Fragment>
     );

@@ -4,9 +4,8 @@ import {Link} from "react-router-dom";
 import './Home.style.scss';
 
 export default (props) => (
-  <section className="padding__horizontal__10">
-    <h4 className="padding__bottom__20">نیازمندی شما چیست؟</h4>
-    <div className="uk-grid-small uk-child-width-1-2" uk-grid="true">
+  <section className="padding__horizontal__30 height__expand flex__center__vertical">
+    <div className="uk-grid-small uk-child-width-1-2 flex-1 cards" uk-grid="true">
       {
         props.menus.map((menu, index) => (
           <div key={`menu-${index}`}>

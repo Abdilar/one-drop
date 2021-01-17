@@ -21,4 +21,17 @@ $green-color: #8BC34A;
   }
 }
 
+.best-button {
+  margin: 0 5px;
+  border: 2px solid #4951d1 !important;
+  font-size: 1.8rem;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+
+  &.activity-button--active {
+    background-color: #4951d1 !important;
+  }
+}
+
 
