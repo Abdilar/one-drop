@@ -9,9 +9,14 @@ import {PAGE, DONE, DEFAULT_GOALS, WEIGHT, PAGE_MAP} from "../../config/variable
 import "./Weight.style.scss";
 
 class Weight extends React.Component {
+  themRef = React.createRef();
   state = {
     weightValue: ""
   };
+
+  componentDidMount() {
+    this.themRef.current.focus();
+  }
 
   handleChange = (value) => {
     this.setState({weightValue: value})
@@ -47,7 +52,7 @@ class Weight extends React.Component {
       <React.Fragment>
         <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
           <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
-          <WeightTheme isBest={this.props.isBest} firstDescription={description} onChangeFirst={this.handleChange} />
+          <WeightTheme ref={this.themRef} isBest={this.props.isBest} firstDescription={description} onChangeFirst={this.handleChange} />
         </section>
         {
           this.props.isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack} />

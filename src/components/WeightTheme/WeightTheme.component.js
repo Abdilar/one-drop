@@ -4,7 +4,7 @@ import {isEmpty, isFunction, jalaliDate} from "../../helper/functions";
 
 import "./WeightTheme.style.scss"
 
-const WeightTheme = (props) => {
+const WeightTheme = React.forwardRef((props, ref) => {
   const [firstValue, setFirstValue] = useState("0");
   const [secondValue, setSecondValue] = useState("0");
   const date = jalaliDate(Date.now());
@@ -27,11 +27,6 @@ const WeightTheme = (props) => {
     <section className="flex-1">
       <div className={`${!props.isBest ? "weight__header" : ""}`}>
         <div className="weight__input text__center padding__vertical__25 border__bottom">
-          <div className="flex__column flex__center__horizontal">
-            <input dir="ltr" type="tel" value={firstValue} onChange={handleFirstChange}/>
-            <span className="input__description">{props.firstDescription}</span>
-          </div>
-          {isFunction(props.onChangeSecond) && <div className="input__separator">/</div>}
           {
             isFunction(props.onChangeSecond) && (
               <div className="flex__column flex__center__horizontal">
@@ -39,6 +34,11 @@ const WeightTheme = (props) => {
                 <span className="input__description">{props.secondDescription}</span>
               </div>
             )}
+          {isFunction(props.onChangeSecond) && <div className="input__separator">/</div>}
+          <div className="flex__column flex__center__horizontal">
+            <input ref={ref} dir="ltr" type="tel" value={firstValue} onChange={handleFirstChange}/>
+            <span className="input__description">{props.firstDescription}</span>
+          </div>
         </div>
         <div>
           <div className="padding__vertical__15 border__bottom padding__horizontal__20">
@@ -68,7 +68,7 @@ const WeightTheme = (props) => {
       </div>
     </section>
   )
-};
+});
 
 
 export default WeightTheme;

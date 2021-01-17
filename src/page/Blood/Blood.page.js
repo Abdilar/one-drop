@@ -9,10 +9,15 @@ import {DEFAULT_GOALS, DONE, PAGE, BLOOD, PAGE_MAP, WEIGHT} from "../../config/v
 import "./Blood.style.scss";
 
 class Blood extends React.Component {
+  themRef = React.createRef();
   state = {
     bloodValue: "",
     bloodValue2: ""
   };
+
+  componentDidMount() {
+    this.themRef.current.focus();
+  }
 
   handleChange = (value) => {
     this.setState({bloodValue: value});
@@ -51,7 +56,7 @@ class Blood extends React.Component {
       <React.Fragment>
         <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
           <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
-          <WeightTheme isBest={this.props.isBest} firstDescription={"سیستولیک"} secondDescription="دیاستولیک" onChangeFirst={this.handleChange}
+          <WeightTheme ref={this.themRef} isBest={this.props.isBest} firstDescription={"سیستولیک"} secondDescription="دیاستولیک" onChangeFirst={this.handleChange}
                        onChangeSecond={this.handleChangeSecond}/>
         </section>
         {
