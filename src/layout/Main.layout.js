@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {getPath, errorAlert, successAlert} from "../helper/functions";
 import {setLogData, setCurrentStep, setTimeSpend, resetLogs} from "../redux/action/general.action";
 import {DEFAULT_GOALS, DONE, LIMIT, PAGE_MAP, PAGE} from "../config/variables";
+import BestCase from './BestCase.component';
 
 import style from "./Main.module.scss";
 
@@ -71,7 +72,7 @@ class MainLayout extends React.Component {
       <React.Fragment>
         <div className={style.container}>
           <div className={style.container__wrapper} id="canvas-container">
-            {this.props.children}
+            {this.props.isBest ? <BestCase>{this.props.children}</BestCase> : this.props.children}
           </div>
         </div>
       </React.Fragment>
@@ -81,7 +82,8 @@ class MainLayout extends React.Component {
 
 const mapStateToProps = (state) => ({
   currentStep: state.general.currentStep,
-  general: state.general
+  general: state.general,
+  isBest: state.layout.isBest
 });
 
 const mapDispatchToProps = (dispatch) => ({

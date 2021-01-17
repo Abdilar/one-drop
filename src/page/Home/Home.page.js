@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import {Link} from "react-router-dom";
 import {PAGE} from "../../config/variables";
+import BestCase from './BestCase.component';
 
 import "./Home.style.scss";
 import blood from '../../asset/images/blood.svg';
@@ -13,6 +14,7 @@ import scale from '../../asset/images/scale.svg';
 import menuBlood from '../../asset/images/menu-blood.svg';
 import menuRunning from '../../asset/images/menu-running.svg';
 import stethoscope from '../../asset/images/stethoscope.svg';
+import {connect} from "react-redux";
 
 class Home extends React.Component {
   state = {
@@ -109,6 +111,10 @@ class Home extends React.Component {
   };
 
   render() {
+    if (this.props.isBest) {
+      return <BestCase menus={this.state.menus} />
+    }
+
     return (
       <section className="flex__column height__expand">
         <div
@@ -242,4 +248,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  isBest: state.layout.isBest
+});
+
+export default connect(mapStateToProps)(Home);

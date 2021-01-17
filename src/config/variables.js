@@ -20,6 +20,9 @@ export const PAGE = {
   },
   REPORT: {
     VALUE: 'report',
+  },
+  GOOD_CASE: {
+    VALUE: 'good-case',
   }
 };
 

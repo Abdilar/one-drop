@@ -1,3 +1,4 @@
+@import "../variables/colors";
 $color-white: #fff;
 $color-muted: #f7f8fa;
 $color-light-muted: #fbfbfb;
@@ -8,7 +9,8 @@ $background-colors: (
   muted: $color-muted,
   light-muted: $color-light-muted,
   transparent: transparent,
-  black: $color-dark
+  black: $color-dark,
+  primary: $sakit-primary-color
 );
 
 .background {

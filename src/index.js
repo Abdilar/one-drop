@@ -4,7 +4,10 @@ import { Provider as ReduxProvider } from "react-redux";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import * as variables from './config/variables';
 import store from "./redux/store";
-import AppRouting from "../src/route/app.route";
+import {setIsBest} from './redux/action/general.action';
+import {getPath} from "./helper/functions";
+import AppRouting from "./route/app.route";
+import history from './helper/history';
 
 import "./helper/customIcons";
 import "uikit/dist/css/uikit.min.css";
@@ -32,6 +35,9 @@ const renderDOM = () => (
   ReactDOM.render(<App />, document.getElementById('root'))
 );
 
+const isBest = getPath().includes(variables.PAGE.GOOD_CASE.VALUE);
+store.dispatch(setIsBest(isBest));
+history.replace(variables.PAGE.HOME.VALUE);
 renderDOM();
 
 // If you want to start measuring performance in your app, pass a function

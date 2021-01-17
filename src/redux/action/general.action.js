@@ -6,6 +6,8 @@ export const setLog = (name, data) => ({type: types.SET_LOG, name, data});
 export const resetLogs = (name) => ({type: types.SET_LOGS, name});
 export const setCurrentStep = (data) => ({type: types.SET_CURRENT_STEP, data});
 
+export const setIsBest = (data) => ({type: types.SET_IS_BEST, data});
+
 export const setLogData = (name, log) => {
   return dispatch => {
     return new Promise(resolve => {

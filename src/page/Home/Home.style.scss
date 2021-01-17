@@ -115,3 +115,31 @@ $green-color: #8BC34A;
 .active-modal-dialog {
   opacity: 1 !important;
 }
+
+.home-card {
+  display: inherit;
+  border-radius: 20px;
+  min-height: 150px;
+
+  &-orange {
+    background-color: #ed9f44;
+  }
+  &-red {
+    background-color: #ee5264;
+  }
+  &-green {
+    background-color: #32d0de;
+  }
+  &-blue {
+    background-color: #4a52d2;
+  }
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    padding: 13px;
+    box-sizing: border-box;
+    background-color: rgba(#fff, .2);
+  }
+}
