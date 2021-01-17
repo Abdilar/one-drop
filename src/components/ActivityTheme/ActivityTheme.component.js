@@ -21,12 +21,12 @@ const ActivityTheme = React.forwardRef((props, ref) => {
   return (
     <section className="flex-1">
       <div className={`${!props.isBest ? "activity__header" : "padding__horizontal__20"}`}>
-        <div className={`${props.isBest ? "best-input flex__column" : ""} activity__input text__center padding__vertical__25 border__bottom`}>
+        <div className={`${props.isBest ? "best-input flex__column" : ""} activity__input text__center ${props.isGlucose ? "padding__vertical__25" : ""} border__bottom ${props.isBest && props.isGlucose ? "!padding__bottom__80" : ""}` }>
           {
             props.isBest ? (
-              <div className="flex__column flex__center__horizontal">
+              <div className={`flex__column flex__center__horizontal ${!props.isGlucose ? "margin__bottom__25" : ""}`}>
                 <input ref={ref} tabIndex="0" dir="ltr" type="tel" value={value} onChange={handleChange} />
-                <span className="activity__description">{props.description}</span>
+                <span className={`activity__description ${props.isBest ? "text__black" : ""}`}>{props.description}</span>
               </div>
               ) : (
               <div className={props.color}>

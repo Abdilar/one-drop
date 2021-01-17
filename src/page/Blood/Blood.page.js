@@ -55,6 +55,14 @@ class Blood extends React.Component {
 
     return (
       <React.Fragment>
+        {
+          this.props.isBest && (
+            <h3 className="margin__remove padding__horizontal__20 padding__vertical__30 position__absolute uk-position-top-right text__white">
+              <div className="!text__medium opacity-06">میانگین فشارخون شما</div>
+              <div className="padding__vertical__20">81 / 122</div>
+            </h3>
+          )
+        }
         <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
           <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
           <WeightTheme ref={this.themRef} isBest={this.props.isBest} firstDescription={"سیستولیک"} secondDescription="دیاستولیک" onChangeFirst={this.handleChange}

@@ -51,13 +51,21 @@ class Glucose extends React.Component {
 
   render() {
     const {isBest} = this.props;
-    const title = isBest ? "میزاان گلوکز را وارد کنید" : "افزودن گلوکز";
+    const title = isBest ? "میزان گلوکز را وارد کنید" : "افزودن گلوکز";
 
     return (
       <React.Fragment>
+        {
+          this.props.isBest && (
+            <h3 className="margin__remove padding__horizontal__20 padding__vertical__30 position__absolute uk-position-top-right text__white">
+              <div className="!text__medium opacity-06">میانگین گلوکز شما</div>
+              <div className="padding__vertical__20"><span className="text__large !font-regular margin__right__10">mg/dL</span>117</div>
+            </h3>
+          )
+        }
         <section className={`flex__column ${isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
           <Header isBest={isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
-          <ActivityTheme ref={this.themRef} isBest={isBest} description="mg/dL" onChange={this.handleChange} color="red" />
+          <ActivityTheme isGlucose={true} ref={this.themRef} isBest={isBest} description="mg/dL" onChange={this.handleChange} color="red" />
         </section>
         {
           isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack}/>

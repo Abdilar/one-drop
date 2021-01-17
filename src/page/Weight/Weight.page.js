@@ -51,6 +51,14 @@ class Weight extends React.Component {
     const description = this.props.isBest ? "کیلوگرم" : "Ib";
     return (
       <React.Fragment>
+        {
+          this.props.isBest && (
+            <h3 className="margin__remove padding__horizontal__20 padding__vertical__30 position__absolute uk-position-top-right text__white">
+              <div className="!text__medium opacity-06">میانگین وزن شما</div>
+              <div className="padding__vertical__20">78 <span className="text__large !font-regular margin__right__10">کیلوگرم</span></div>
+            </h3>
+          )
+        }
         <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
           <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
           <WeightTheme ref={this.themRef} isBest={this.props.isBest} firstDescription={description} onChangeFirst={this.handleChange} />

@@ -4,7 +4,7 @@ import style from './Main.module.scss';
 
 export default (props) => (
   <section className="background__primary flex__column height__expand">
-    <header className={`padding__vertical__20 padding__horizontal__30 ${!props.showName ? "min-height__150" : ""}`}>
+    <header className={`padding__vertical__20 padding__horizontal__30 ${!props.showName ? "min-height__100" : ""}`}>
       {
         props.showName && (
           <div className="flex__center__vertical flex__space-between position__relative z-index-1">

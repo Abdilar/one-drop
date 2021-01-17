@@ -57,9 +57,17 @@ class Activity extends React.Component {
 
     return (
       <React.Fragment>
+        {
+          this.props.isBest && (
+            <h3 className="margin__remove padding__horizontal__20 padding__vertical__30 position__absolute uk-position-top-right text__white">
+              <div className="!text__medium opacity-06">میانگین فعالیت شما</div>
+              <div className="padding__vertical__20">2<span className="text__large !font-regular margin__right__10">ساعت</span></div>
+            </h3>
+          )
+        }
         <section className={`flex__column ${isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
           <Header isBest={isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
-          <ActivityTheme ref={this.themRef} isBest={isBest} description="دقیقه" onChange={this.handleChange} color="orange">
+          <ActivityTheme isGlucose={false} ref={this.themRef} isBest={isBest} description="دقیقه" onChange={this.handleChange} color="orange">
             {isBest && <h4 className="margin__remove padding__right__10 width__expand text__right">شدت فعالیت را انتخاب کنید</h4>}
             <div className={`padding__vertical__20 ${isBest ? "width__expand box__border display__flex" : "padding__horizontal__20"}`}>
               <button className={`activity-button ${isBest ? "best-button" : ""} ${activeButton === 'low' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('low')}>کم</button>
