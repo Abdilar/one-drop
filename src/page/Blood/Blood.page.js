@@ -16,7 +16,7 @@ class Blood extends React.Component {
   };
 
   componentDidMount() {
-    this.themRef.current.focus();
+    this.props.isBest && this.themRef.current.focus();
   }
 
   handleChange = (value) => {

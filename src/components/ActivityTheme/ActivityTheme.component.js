@@ -32,16 +32,34 @@ const ActivityTheme = (props) => {
           {!isEmpty(props.children) && props.children}
         </div>
         <div>
-          <div dir="ltr" className="padding__vertical__15 border__bottom padding__horizontal__20 flex__center__vertical">
-            <span className="margin__right__20"><i className="icon-calendar !text__xxlarge" /></span>
-            {/*<DatePicker timePicker={false} />*/}
-            <DatePicker
-              onChange={value => console.log()}
-              isGregorian={false}
-              value={date}
-              timePicker={false}
-            />
-          </div>
+          {
+            props.isBest ? (
+              <div className="padding__vertical__15 border__bottom padding__horizontal__20">
+                <div className="flex__center__vertical ">
+                  <span className="margin__left__15"><i className="icon-calendar !text__xlarge" /></span>
+                  <span className="text__large">تاریخ</span>
+                </div>
+                <div className={`padding__top__5 ${props.isBest ? "best-datepicker" : ""}`}>
+                  <DatePicker
+                    onChange={value => console.log()}
+                    isGregorian={false}
+                    value={date}
+                    timePicker={false}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div dir="ltr" className="padding__vertical__15 border__bottom padding__horizontal__20 flex__center__vertical">
+                <span className="margin__right__20"><i className="icon-calendar !text__xxlarge" /></span>
+                <DatePicker
+                  onChange={value => console.log()}
+                  isGregorian={false}
+                  value={date}
+                  timePicker={false}
+                />
+              </div>
+            )
+          }
         </div>
       </div>
     </section>

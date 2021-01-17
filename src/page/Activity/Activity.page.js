@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActivityTheme, Header} from "../../components";
+import {ActivityTheme, Footer, Header, WeightTheme} from "../../components";
 import {errorAlert, errorToast, isEmpty} from "../../helper/functions";
 import {ACTIVITY, BLOOD, DEFAULT_GOALS, DONE, PAGE, PAGE_MAP} from "../../config/variables";
 import {setStateData} from "../../redux/action/general.action";
@@ -45,17 +45,24 @@ class Activity extends React.Component {
   };
 
   render() {
+    const title = this.props.isBest ? "میزاان فعالیت خود را وارد کنید" : "افزودن فعالعیت";
+
     return (
-      <section className="flex__column height__expand">
-        <Header onAccept={this.handleAccept} onBack={this.handleBack} title="افزودن فعالیت"/>
-        <ActivityTheme description="دقیقه" onChange={this.handleChange} color="orange">
-          <div className="padding__horizontal__20 padding__vertical__20">
-            <button className={`activity-button ${this.state.activeButton === 'low' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('low')}>کم</button>
-            <button className={`activity-button ${this.state.activeButton === 'med' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('med')}>نرمال</button>
-            <button className={`activity-button ${this.state.activeButton === 'hrd' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('hrd')}>زیاد</button>
-          </div>
-        </ActivityTheme>
-      </section>
+      <React.Fragment>
+        <section className={`flex__column ${this.props.isBest ? "padding__horizontal__20 flex-1 overflow-aut" : "height__expand"}`}>
+          <Header isBest={this.props.isBest} onAccept={this.handleAccept} onBack={this.handleBack} title={title} />
+          <ActivityTheme ref={this.themRef} isBest={this.props.isBest} description="دقیقه" onChange={this.handleChange} color="orange">
+            <div className="padding__horizontal__20 padding__vertical__20">
+              <button className={`activity-button ${this.state.activeButton === 'low' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('low')}>کم</button>
+              <button className={`activity-button ${this.state.activeButton === 'med' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('med')}>نرمال</button>
+              <button className={`activity-button ${this.state.activeButton === 'hrd' ? 'activity-button--active' : ''}`} onClick={() => this.handleClick('hrd')}>زیاد</button>
+            </div>
+          </ActivityTheme>
+        </section>
+        {
+          this.props.isBest && <Footer onAccept={this.handleAccept} onBack={this.handleBack}/>
+        }
+      </React.Fragment>
     );
   }
 }
@@ -65,6 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 const mapStateToProps = (state) => ({
   currentStep: state.general.currentStep,
+  isBest: state.layout.isBest
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Activity));
